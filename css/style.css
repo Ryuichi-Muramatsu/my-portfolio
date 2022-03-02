@@ -1,0 +1,464 @@
+@font-face {
+font-family:'JosefinSans-SemiBoldItalic';
+src: url('../fonts/JosefinSans-SemiBoldItalic.ttf') format('truetype');
+}
+
+html{
+  font-size: 62.5%;
+  font-family:"メイリオ";
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.fv{
+  background-image:url(../images/fv.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.fv-body-wrapper{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fv-body{
+  color:#00dbde;
+  font-family:'JosefinSans-SemiBoldItalic', sans-serif;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.fv-body-name{
+  font-size: 3.2rem;
+}
+
+.fv-body-txt{
+  font-size: 1.4rem;
+}
+
+/* 以下、ハンバーガーメニューの実装 */
+
+#hamburger{
+  opacity:0;
+  position: fixed;
+}
+
+label .burger{
+  position: fixed;
+  top: 2.6rem;
+  right: 2rem;
+  z-index: 3;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+label .burger::before,
+label .burger::after,
+label .burger .bar{
+  position: absolute;
+  left: 0;
+  width:100%;
+  height: 0.5rem;
+  border-radius: 3px;
+  background:#00dbde;
+  content: "";
+  transition: all 0.5s;
+}
+
+label .burger::before{
+  top: 0;
+  transform-origin: top left;
+}
+
+label .burger .bar{
+  top: 45%;
+}
+
+label .burger::after{
+  bottom: 0;
+  transform-origin: bottom left;
+}
+
+/*以下、メニューのCSS  */
+#menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index:2;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* メニューに色をつけるためのCSS */
+ #menu::before{
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   z-index:-1;
+   width: 25rem;
+   background-color:#00dbde;
+   content: '';
+   transform: skewX(15deg) translateX(-100%);
+   transform-origin: bottom left;
+   transition: transform 0.3s;
+ }
+
+ /* メニューの文字を調整 */
+
+ #menu a{
+   margin: 1.3rem 0;
+   padding:0.2rem 3rem;
+   font-size: 2rem;
+   color:#fff;
+   transform: translateX(-100%);
+   transition: all 0.15s,transform 0.5s;
+   transition-timing-function: cubic-bezier(0.19,1,0.22,1);
+ }
+
+ /* メニューボタンが×印を作るための実装 */
+
+ #hamburger:checked + label .burger::before,
+ #hamburger:checked + label .burger::after{
+   width: 130%;
+ }
+
+ #hamburger:checked + label .burger::before{
+   transform: rotate(45deg);
+ }
+ #hamburger:checked + label .burger::after{
+   transform: rotate(-45deg);
+ }
+
+ #hamburger:checked + label .burger .bar{
+   transform: scale(0);
+ }
+
+/* ハンバーガーメニュー押下後のメニューの動きの実装 */
+ #hamburger:checked ~ #menu::before{
+   transform: skewX(15deg) translateX(0);
+ }
+
+ #hamburger:checked ~#menu a{
+   transform: translateX(0);
+ }
+
+ /* ハンバーガーメニュー押下後のメニュー以外の黒い部分の実装 */
+#hamburger:checked ~ .light-dark{
+  background: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* 以下、profile */
+
+.profile-content-wrapper{
+  padding:5rem 2rem 3rem 2rem;
+}
+
+.profile-img{
+  width: 20rem;
+  max-width: 20rem;
+}
+
+.section-set{
+  color:#00dbde;
+  text-align: center;
+}
+
+.section-set-ttl{
+  font-size: 2.4rem;
+  padding-bottom: 1rem;
+}
+
+.section-set-underBar{
+  width: 4rem;
+  border-top: 0.1rem solid #000;
+  margin:0 auto 1rem ;
+}
+
+.section-set-txt{
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.profile-img-wrapper{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-txt{
+  font-size: 1.6rem;
+}
+
+/* 以下、works */
+.works{
+  background-color: #f8f8f8;
+}
+
+.works-content-wrapper{
+  padding:5rem 2rem 3rem 2rem;
+}
+
+.works-item{
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.works-ttl{
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.works-tool{
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.works-img{
+  width:100%;
+  max-width: 100%;
+}
+
+/* 以下、feature */
+
+.feature{
+  background-color: #333;
+}
+
+.feature-content-wrapper{
+  padding:5rem 2rem 3rem 2rem;
+    color: #fff;
+}
+
+.feature-txt{
+  margin-top: 3rem;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+/* 以下、skill */
+.skill{
+  background-color: #fff;
+}
+
+.skill-content-wrapper{
+  padding:5rem 2rem 3rem 2rem;
+}
+
+.skill-flex-box{
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.skill-set-item{
+  font-size: 18px;
+  display: flex;
+  width: 160px;
+  color: black;
+}
+
+.skill-item-image{
+  width: 42px;
+}
+
+.skill-item-image1{
+  margin-right: 10px;
+}
+
+.skill-text{
+  font-size: 14px;
+  padding-bottom: 60px;
+  color: black;
+  text-align: left;
+}
+
+.tool-flex-box{
+  display: flex;
+  margin-bottom: 15px;
+}
+
+/* 以下、contact */
+.contact{
+  background-color:#f8f8f8;
+}
+
+.contact-content-wrapper{
+  padding:5rem 2rem 3rem 2rem;
+}
+
+.title-flex-box{
+  text-align: center;
+}
+
+.contact-text{
+  margin-bottom: 50px;
+  font-size: 14px;
+  color: #000;
+}
+
+.contact-img{
+  width: 23px;
+  margin-right: 17px;
+}
+
+.contact-wrapper{
+  display: flex;
+}
+
+.contact-icon-text{
+  margin-bottom: 25px;
+  font-size: 18px;
+  color: #000;
+}
+
+.footer{
+  padding: 10px 15px 10px 0 ;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* ふわっとjs用 */
+.scroll-up {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px);
+  transition: all 1s;
+}
+.scroll-up.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+
+
+/* スクリーンサイズが1024px以上の場合のみ適用 */
+@media screen and (min-width :1024px) {
+
+  /* profile */
+
+  .profile-pc-wrapper-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-pc-wrapper{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .profile-img-wrapper{
+    width: 30%;
+  }
+
+  .profile-img{
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .profile-txt{
+    width: 30rem;
+  }
+
+  /* works */
+
+  .works-img{
+    width:100%;
+    max-width: 100%;
+  }
+
+  .works-img-wrapper{
+    width: 60%;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+  /* feature */
+
+  .feature-wrapper-pc-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  .feature-wrapper-pc{
+    width: 70%;
+    display: flex;
+    margin-top: 5rem;
+    justify-content: space-around;
+  }
+
+  .feature-txt{
+    margin-top: 0px;
+    width: 35rem;
+  }
+
+  .feature-img-wrapper{
+    width:40%;
+    max-width:40%;
+    margin: 0;
+  }
+
+  .feature-img{
+    width: 100%;
+  }
+
+/* skill*/
+
+.skill-set-wrapper-pc{
+  display: flex;
+  justify-content: center;
+}
+
+.skill-set{
+  width: 70%;
+}
+
+.skill-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.skill-items .skill-item1,
+.skill-items .skill-item2,
+.skill-items .skill-item3,
+.skill-items .skill-item4{
+  width: 40%;
+}
+
+.tool-text-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.tool-text{
+  width: 70%;
+}
+
+.tool-flex-box-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.tool-flex-box{
+  width: 40%;
+}
+
+/* contact */
+.contact-wrapper-pc{
+  display: flex;
+  justify-content: center;
+}
